@@ -11,11 +11,11 @@ def multiplicacion(factor1, factor2):
 	"""
 	# Validar tipos: deben ser enteros
 	if not isinstance(factor1, int) or not isinstance(factor2, int):
-		raise Exception("Ambos numeros deben ser enteros positivos")
+		raise ValueError("Ambos numeros deben ser enteros positivos")
 
 	# Validar no negativos
 	if factor1 < 0 or factor2 < 0:
-		raise Exception("Ambos numeros deben ser enteros positivos")
+		raise ValueError("Ambos numeros deben ser enteros positivos")
 
 	return factor1 * factor2
 

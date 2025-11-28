@@ -1,14 +1,14 @@
 
 import pytest
 
-def multiplicar(a: int, b: int) -> int:
-    return a * b
+from app.validator import multiplicacion
+
 
 def test_multiplicacion_exitosa_pequenos():
-    assert multiplicar(3, 4) == 12
+    assert multiplicacion(3, 4) == 12
 
 def test_multiplicacion_exitosa_grandes():
-    assert multiplicar(50, 20) == 1000
+    assert multiplicacion(50, 20) == 1000
 
 @pytest.mark.parametrize("factor1, factor2", [
     (-5, 10),     # Factor1 negativo
@@ -17,7 +17,7 @@ def test_multiplicacion_exitosa_grandes():
 ])
 def test_numeros_negativos(factor1, factor2):
     with pytest.raises(Exception) as excinfo:
-        multiplicar(factor1, factor2)
+        multiplicacion(factor1, factor2)
     assert str(excinfo.value) == "Ambos numeros deben ser enteros positivos"
 
 @pytest.mark.parametrize("factor1, factor2", [
@@ -27,5 +27,5 @@ def test_numeros_negativos(factor1, factor2):
 ])
 def test_numeros_no_enteros(factor1, factor2):
     with pytest.raises(Exception) as excinfo:
-        multiplicar(factor1, factor2)
+        multiplicacion(factor1, factor2)
     assert str(excinfo.value) == "Ambos numeros deben ser enteros positivos"
